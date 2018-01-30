@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="//connect.facebook.net/en_US/sdk.js"></script>
+	<meta name="google-signin-client_id" content="631320733089-k8squ0m5ggojh4n33btocn3hmg6pe9ru.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+
+	<title>Login</title>
+
+	<link rel="stylesheet" href="assets/demo.css">
+    <link rel="stylesheet" href="assets/form-login.css">
+    <link href="css/project.css" rel="stylesheet" type="text/css" media="all" />
+    
+
+</head>
+<body>
+<script>
+    (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+    
+    <div class="row" style="align:center">
+        <form class="form-inline" action="product_page.php?categoryid=1" method="get">
+            <input type="hidden" name="categoryid" value="1">
+            <button type="submit" class="btn btn-success checkout" style="margin-left: 10px">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                Get Back To Shopping
+            </button>
+        </form>
+    </div>
+
+    <div class="main-content">
+
+        <!-- You only need this form and the form-login.css -->
+
+        <form class="form-login"  method="post" action="signin.php">
+
+            <div class="form-log-in-with-email">
+
+                <div class="form-white-background">
+
+                    <div class="form-title-row">
+                        <h1>Log in</h1>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>Email</span>
+                            <input id='email' type="email" name="email" required="required">
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>Password</span>
+                            <input id='password' type="password" name="password" required="required">
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <button type="submit">Log in</button>
+                    </div>
+
+                </div>
+
+                <!-- <a href="#" class="form-forgotten-password">Forgotten password &middot;</a> -->
+                <a href="register.html" class="form-create-an-account">Create an account &rarr;</a>
+
+            </div>
+
+            <div class="form-sign-in-with-social">
+
+                <div class="form-row form-title-row">
+                    <span class="form-title">Sign in with</span>
+                </div>
+<div class="divider"></div>
+<div class="divider"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : 1612468408819187,
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.11',
+    });
+	
+	FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+	
+			//     FB.getLoginStatus(function(response) {
+		    // 	if (response.status === 'connected') {
+		    // 		document.getElementById('status').innerHTML = 'We are connected.';
+		    // 		document.getElementById('login').style.visibility = 'hidden';
+		    // 	} else if (response.status === 'not_authorized') {
+		    // 		document.getElementById('status').innerHTML = 'We are not logged in.'
+		    // 	} else {
+		    // 		document.getElementById('status').innerHTML = 'You are not logged into Facebook.';
+		    // 	}
+		    // });
+});
+
+
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+ </script> 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId="+1612468408819187;
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+
+<script>
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
+
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+
+function getInfo() {
+	FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id'}, function(response) {
+	document.getElementById('status').innerHTML = response.id;
+    console.log(response);
+    }
+});
+
+</script>
+
+
+<div class="divider"></div>
+
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
